@@ -37,28 +37,44 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-//        http.requiresChannel().anyRequest().requiresSecure();
-        CustomAuthentificationFilter customAuthentificationFilter = new CustomAuthentificationFilter(authenticationManagerBean());
-        customAuthentificationFilter.setFilterProcessesUrl("/api/login");
-        http.csrf().disable();
-        http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
-        // Accessed by all requests
-        http.cors().and().authorizeRequests().antMatchers("/api/login/**", "/api/token/refresh/**", "/api/file/upload", "/api/logout", "/api/register").permitAll();
-        // Admin Requests
-        http.authorizeRequests().antMatchers(GET, "/api/user/**").hasAnyAuthority("Admin", "Student");
-        http.authorizeRequests().antMatchers(POST, "/api/documents/**").hasAnyAuthority("Admin", "Student","User");
-        http.authorizeRequests().antMatchers(DELETE, "/api/documents/**").hasAnyAuthority("Admin", "Student","User");
-        http.authorizeRequests().antMatchers(GET, "/api/documents/**").hasAnyAuthority("Admin", "Student","User");
-        // User Requests
-
-        // Student Request
-        http.authorizeRequests().antMatchers("/api/user/details").hasAnyAuthority("Student");
-        // Other endpoints that are common between all users
-        http.authorizeRequests().anyRequest().authenticated();
-        // Adding the filter to handle Authentification operation
-        http.addFilter(customAuthentificationFilter);
-        // Adding filter to scan the upcoming request and search for the access token
-        http.addFilterBefore(new CustomAuthorizationFilter(), UsernamePasswordAuthenticationFilter.class);
+		/*
+		 * // http.requiresChannel().anyRequest().requiresSecure();
+		 * CustomAuthentificationFilter customAuthentificationFilter = new
+		 * CustomAuthentificationFilter(authenticationManagerBean());
+		 * customAuthentificationFilter.setFilterProcessesUrl("/api/login");
+		 * http.csrf().disable();
+		 * http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.
+		 * STATELESS); // Accessed by all requests
+		 * http.cors().and().authorizeRequests().antMatchers("/api/login/**",
+		 * "/api/token/refresh/**", "/api/file/upload", "/api/logout",
+		 * "/api/register").permitAll(); // Admin Requests
+		 * http.authorizeRequests().antMatchers(GET,
+		 * "/api/user/**").hasAnyAuthority("Admin", "Student");
+		 * http.authorizeRequests().antMatchers(POST,
+		 * "/api/documents/**").hasAnyAuthority("Admin", "Student","User");
+		 * http.authorizeRequests().antMatchers(DELETE,
+		 * "/api/documents/**").hasAnyAuthority("Admin", "Student","User");
+		 * http.authorizeRequests().antMatchers(GET,
+		 * "/api/documents/**").hasAnyAuthority("Admin", "Student","User"); // User
+		 * Requests
+		 * 
+		 * // Student Request
+		 * http.authorizeRequests().antMatchers("/api/user/details").hasAnyAuthority(
+		 * "Student"); // Other endpoints that are common between all users
+		 * http.authorizeRequests().anyRequest().authenticated(); // Adding the filter
+		 * to handle Authentification operation
+		 * http.addFilter(customAuthentificationFilter); // Adding filter to scan the
+		 * upcoming request and search for the access token http.addFilterBefore(new
+		 * CustomAuthorizationFilter(), UsernamePasswordAuthenticationFilter.class);
+		 */
+        // for testing api :
+    	 http.cors().and().csrf().disable()
+        .authorizeRequests()
+        .antMatchers(
+        		"/swagger-ui.html","/api/user/**","/api/register","/api/logout","/api/file/upload",
+        		"/api/login/**","/api/user/details","/api/documents/**","/api/user/**")
+        .permitAll();
+       
     }
 
     @Bean

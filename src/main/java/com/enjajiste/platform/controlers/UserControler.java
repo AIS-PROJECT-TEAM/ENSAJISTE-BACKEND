@@ -30,7 +30,7 @@ import static org.springframework.http.HttpStatus.*;
 import static org.springframework.util.MimeTypeUtils.APPLICATION_JSON_VALUE;
 
 
-@CrossOrigin(origins = "*", allowedHeaders = "*")
+@CrossOrigin(origins = "http://localhost:8080/", allowedHeaders = "http")
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/api")
