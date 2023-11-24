@@ -1,8 +1,6 @@
-"#  https://github.com/AIS-PROJECT-TEAM/ENSAJISTE-BACKEND.git 
-"# ensajiste plateforme" 
+"# git clone https://github.com/AIS-PROJECT-TEAM/ENSAJISTE-BACKEND.git 
 
-
-## Project ReactJs & Springboot For Ensajiste Students ##
+## Project Springboot For Ensajiste Plateform ##
 
 ##Conception
 ![conception](./img/conception.png)

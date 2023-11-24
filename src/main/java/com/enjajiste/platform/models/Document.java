@@ -39,6 +39,7 @@ public class Document {
 	@NotNull
 	private String url;
 	private boolean etat = false;
+
 	@ManyToOne(cascade = CascadeType.PERSIST)
 	@NotNull
 	private User user;
@@ -50,4 +51,4 @@ public class Document {
 				+ ", etat=" + etat + ", user=" + user + '}';
 	}
 
-}
+} 
