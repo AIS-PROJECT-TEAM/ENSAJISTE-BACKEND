@@ -1,12 +1,18 @@
 package com.enjajiste.platform.models;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+
 import com.sun.istack.NotNull;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
-import javax.persistence.*;
-import java.util.Date;
 
 @Entity
 @Data
@@ -37,7 +43,103 @@ public class Document {
     @NotNull
     private User user;
 
-    @Override
+    public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public String getEnseignant() {
+		return enseignant;
+	}
+
+	public void setEnseignant(String enseignant) {
+		this.enseignant = enseignant;
+	}
+
+	public String getModule() {
+		return module;
+	}
+
+	public void setModule(String module) {
+		this.module = module;
+	}
+
+	public String getAnnee() {
+		return annee;
+	}
+
+	public void setAnnee(String annee) {
+		this.annee = annee;
+	}
+
+	public String getType() {
+		return type;
+	}
+
+	public void setType(String type) {
+		this.type = type;
+	}
+
+	public String getSemestre() {
+		return semestre;
+	}
+
+	public void setSemestre(String semestre) {
+		this.semestre = semestre;
+	}
+
+	public double getRating() {
+		return rating;
+	}
+
+	public void setRating(double rating) {
+		this.rating = rating;
+	}
+
+	public int getNbr_telechargements() {
+		return nbr_telechargements;
+	}
+
+	public void setNbr_telechargements(int nbr_telechargements) {
+		this.nbr_telechargements = nbr_telechargements;
+	}
+
+	public int getNbr_votes() {
+		return nbr_votes;
+	}
+
+	public void setNbr_votes(int nbr_votes) {
+		this.nbr_votes = nbr_votes;
+	}
+
+	public String getUrl() {
+		return url;
+	}
+
+	public void setUrl(String url) {
+		this.url = url;
+	}
+
+	public boolean isEtat() {
+		return etat;
+	}
+
+	public void setEtat(boolean etat) {
+		this.etat = etat;
+	}
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+
+	@Override
     public String toString() {
         return "Document{" +
                 "id=" + id +

@@ -1,9 +1,9 @@
 package com.enjajiste.platform.services;
 
+import java.util.List;
+
 import com.enjajiste.platform.models.Role;
 import com.enjajiste.platform.models.User;
-
-import java.util.List;
 
 public interface UserService {
 

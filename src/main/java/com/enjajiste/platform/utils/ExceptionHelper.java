@@ -1,8 +1,8 @@
 package com.enjajiste.platform.utils;
 
-import org.springframework.stereotype.Service;
-
 import java.sql.SQLException;
+
+import org.springframework.stereotype.Service;
 
 @Service
 public class ExceptionHelper {
